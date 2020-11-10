@@ -35,6 +35,10 @@ function addSecondList() {
       button.innerHTML = "Texto de ejemplo " + (i + 1);
       button.classList.add("element-" + (i + 1));
 
+      if (i === lista.length - 1) {
+        button.disabled = true;
+      }
+
       li.appendChild(button);
       lista2.appendChild(li);
     }
