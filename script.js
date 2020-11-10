@@ -8,13 +8,21 @@
 //    * Después de generar esta segunda lista, añadid el atributo disabled al último botón.
 // Suerte!
 
-var selectedSpan = document.getElementsByClassName("selected");
-var list = selectedSpan.parentNode();
-console.log(list);
-//for (let i = 0; i < list.childNodes.length; i++) {}
+function addClass() {
+  let ul = document.querySelector(".selected").parentNode.parentNode;
+  let lista = ul.getElementsByTagName("li");
+  for (let i = 0; i < lista.length; i++) {
+    let name = "element-" + (i + 1);
+    lista[i].firstChild.classList.add(name);
+  }
+  console.log(lista);
+  let nodeList = document.querySelectorAll("li.element-2, li.element-4");
+  console.log(nodeList);
+}
 
 window.addEventListener("load", onLoad);
 
 function onLoad() {
+  addClass();
   console.log("hi");
 }
