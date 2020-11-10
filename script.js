@@ -10,19 +10,41 @@
 
 function addClass() {
   let ul = document.querySelector(".selected").parentNode.parentNode;
-  let lista = ul.getElementsByTagName("li");
+  var lista = ul.getElementsByTagName("li");
+
   for (let i = 0; i < lista.length; i++) {
-    let name = "element-" + (i + 1);
-    lista[i].firstChild.classList.add(name);
+    if (i % 2 === 1) {
+      lista[i].style.display = "none";
+    } else {
+      let name = "element-" + (i + 1);
+      lista[i].firstChild.classList.add(name);
+    }
   }
-  console.log(lista);
-  let nodeList = document.querySelectorAll("li.element-2, li.element-4");
-  console.log(nodeList);
+  return lista;
+}
+
+function addSecondList() {
+  let lista = addClass();
+  let lista2 = document.getElementById("list2");
+  for (let i = 0; i < lista.length; i++) {
+    if (i % 2 === 0) {
+      let li = document.createElement("li");
+      li.appendChild(document.createTextNode(""));
+
+      let button = document.createElement("button");
+      button.innerHTML = "Texto de ejemplo " + (i + 1);
+      button.classList.add("element-" + (i + 1));
+
+      li.appendChild(button);
+      lista2.appendChild(li);
+    }
+  }
+  console.log(lista2);
 }
 
 window.addEventListener("load", onLoad);
 
 function onLoad() {
-  addClass();
+  addSecondList();
   console.log("hi");
 }
